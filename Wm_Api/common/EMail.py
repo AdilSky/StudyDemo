@@ -26,7 +26,8 @@ class Email(object):
         self.sender = self.Rc.getMail('Smtp_Sender')
         self.password = self.Rc.getMail('Password')
         self.LReceiver = self.Rc.getMail('OnLine_Receiver')
-        self.PReceiver = self.Rc.getMail('Pre_Receiver')
+        # self.PReceiver = self.Rc.getMail('Pre_Receiver')
+        # self.PReceiver =
         self.TReceiver = self.Rc.getMail('Test_Receiver')
         self.Msg_Title = self.Rc.getMail('Msg_Title')
         self.Content_Type = self.Rc.getMail('Content_Type')
@@ -86,8 +87,10 @@ class Email(object):
         try:
             self.smtp = smtplib.SMTP(self.server, 25)
             self.smtp.login(self.sender, self.password)
-            self.receiver = []
-            self.receiver.append(self.TReceiver)
+            # self.receiver = ['hebaochen@tenez.cn','mazhuang@tenez.cn','yangyaojun@tenez.cn']
+            self.receiver.append(self.PReceiver)
+            # self.receiver = ['yangyaojun@tenez.cn','272981562@qq.com']
+            print(self.receiver)
             # 定义发件人，如果不写，发件人为空
             self.msg['From'] = self.sender
             # 定义收件人，如果不写，收件人为空

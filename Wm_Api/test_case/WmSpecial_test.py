@@ -90,11 +90,12 @@ class WmApiTest(unittest.TestCase):
             # 设置报告打印内容
             print('用例 ' + caseNum, end=': ')
             print(caseName)
-            print('数据参数 : ' + caseData)
+
             # print('搜索商品 : ' + caseDataDict['keyword'])
             if caseRun == 'Y':
                 expectValue = eval(caseDict['ExpectValue'])
                 if method == 'Post':
+                    print('数据参数 : ' + data)
                     response = requests.post(url, data, headers=headers)
                     result = response.json()
                     # 设置断言
@@ -103,9 +104,10 @@ class WmApiTest(unittest.TestCase):
                     else:
                         caseDict['CaseResult'] = 'Fail'
                     print('返回结果', end=': ')
-                    print(result)
+                    print(result,'\n')
                     print('执行结果',end=': ')
                     print(caseDict['CaseResult'], '\n')
+                    print()
                     # 这里要对结果进行一下处理，要不无法存入excel。转为Str类型。
                     caseDict['ResultInfo'] = str(result)
 
@@ -212,7 +214,7 @@ class WmApiTest(unittest.TestCase):
             # 设置报告打印内容
             print('用例 ' + caseNum, end=': ')
             print(caseName)
-            print('数据参数 : ' + caseData)
+
             # print('搜索商品 : ' + caseDataDict['keyword'])
             if caseRun == 'Y':
                 expectValue = eval(caseDict['ExpectValue'])
@@ -224,6 +226,7 @@ class WmApiTest(unittest.TestCase):
                     if caseName == '购物车--删除':
                         # 调用 数据 list拼装函数
                         data = self.getCartDataList(data)
+                    print('数据参数 : ' + data)
                     response = requests.post(url, data, headers=headers)
                     result = response.json()
                     if caseName =='购物车--列表':
@@ -239,9 +242,10 @@ class WmApiTest(unittest.TestCase):
                     else:
                         caseDict['CaseResult'] = 'Fail'
                     print('返回结果', end=': ')
-                    print(result)
-                    print('执行结果',end=': ')
+                    print(result, '\n')
+                    print('执行结果', end=': ')
                     print(caseDict['CaseResult'], '\n')
+                    print()
                     # 这里要对结果进行一下处理，要不无法存入excel。转为Str类型。
                     caseDict['ResultInfo'] = str(result)
 
@@ -298,7 +302,7 @@ class WmApiTest(unittest.TestCase):
             # 设置报告打印内容
             print('用例 ' + caseNum, end=': ')
             print(caseName)
-            print('数据参数 : ' + caseData)
+            # print('数据参数 : ' + caseData)
             # print('搜索商品 : ' + caseDataDict['keyword'])
             if caseRun == 'Y':
                 expectValue = eval(caseDict['ExpectValue'])
@@ -311,7 +315,7 @@ class WmApiTest(unittest.TestCase):
 
                     if caseName == '订单--详情':
                         data = self.getOrderId(data)
-
+                    print('数据参数 : ' + data)
                     response = requests.post(url, data, headers=headers)
                     result = response.json()
                     if caseName =='购物车--列表':
@@ -333,9 +337,10 @@ class WmApiTest(unittest.TestCase):
                     else:
                         caseDict['CaseResult'] = 'Fail'
                     print('返回结果', end=': ')
-                    print(result)
-                    print('执行结果',end=': ')
+                    print(result, '\n')
+                    print('执行结果', end=': ')
                     print(caseDict['CaseResult'], '\n')
+                    print()
                     # 这里要对结果进行一下处理，要不无法存入excel。转为Str类型。
                     caseDict['ResultInfo'] = str(result)
 
